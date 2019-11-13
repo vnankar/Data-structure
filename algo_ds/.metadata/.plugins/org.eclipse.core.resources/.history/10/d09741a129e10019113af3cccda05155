@@ -1,0 +1,55 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+#define SIZE 8
+int comparison=0;
+
+
+
+bool binary_search(int arr[],int key)
+{
+	int left=0;
+	int right=SIZE-1;
+	comparison=0;
+	while(left<=right)
+	{
+		int mid=(left+right)/2;
+		comparison ++;
+		if(key==arr[mid])
+			return true;
+	     if(key<arr[mid])
+	    	 right=mid-1;
+	     else
+	    	 left=mid+1;
+
+	}
+	return false;
+}
+void display_array_elements(int arr[])
+{
+	cout<<"array elements are :  ";
+	for(int i=0;i<SIZE;++i)
+	cout<<setw(4)<<left<<arr[i];
+	cout<<endl;
+
+
+}
+int main(void)
+{
+	int arr[SIZE]={10,20,30,40,50,60,70,80};
+     display_array_elements(arr);
+	int key;
+	cout<<"key elements are :  ";
+	cin>>key;
+	if(binary_search(arr,key))
+	{
+		cout<<"key is there in array  :   "<<key<<endl;
+	cout<<"comparisons ::  "<<comparison<<endl;
+	}
+	else
+	{
+		cout<<"key is not there in array  :   "<<endl;
+		cout<<"comparisons ::  "<<comparison<<endl;
+	}
+	return 0;
+}

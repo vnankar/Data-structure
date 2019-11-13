@@ -1,0 +1,333 @@
+#include<iostream>
+#include<iomanip>
+#include<cstdlib>
+#include<string>
+
+using namespace std;
+
+class list;
+class node;
+class employee
+{
+private:
+	int empid;
+	string name;
+	float salary;
+public:
+	employee(void)
+	{
+		this->empid=0;
+		this->name=" ";
+		this->salary=0.0;
+	}
+	employee(int empid, string name, float salary)
+	{
+		this->empid=empid;
+		this->name=name;
+		this->salary=salary;
+	}
+	friend ostream& operator<<(ostream &cout,const employee &e1);
+	friend istream& operator>>(istream &cin,employee &e1);
+};
+class node
+{
+private:
+	employee data;
+	node *next;
+public:
+	node(employee data);
+
+	friend class list;
+};
+
+class list
+{
+private:
+	node *head;
+	int cnt;
+public:
+	list(void)
+	{b
+		this->head=NULL;
+		this->cnt=0;
+	}
+	bool list_empty(void);
+	int getCnt(void)const;
+	void add_node_at_last(employee data);
+	void add_node_at_first(employee data);
+	void add_node_at_specific(employee data,int pos);
+	void delete_node_at_last(void);
+	void delete_node_at_first(void);
+	void delete_node_at_specific(int pos);
+	void dispaly(void);
+	friend int main(void);
+};
+	node::node(employee data)
+	{
+		this->data=data;
+		this->next=NULL;
+	}
+	bool list::list_empty(void)
+	{
+		return (this->head == NULL);
+	}
+	int list::getCnt() const
+	{
+		return (this->cnt);
+	}
+	void list::dispaly(void)
+	{
+		if(!list_empty())
+		{
+			node *trav=head;
+			cout<<"link list :: "<<endl;
+			while(trav!=NULL)
+			{
+				cout<<trav->data<<" >> ";
+				trav=trav->next;
+			}
+		}
+	}
+	void list::add_node_at_last(employee data)
+	{
+		node *newnode=new node(data);
+		if(list_empty())
+		{
+			head=newnode;
+			this->cnt++;
+		}
+		else
+		{
+			node *trav=head;
+
+			while(trav->next!=NULL)
+				trav=trav->next;
+
+			trav->next=newnode;
+			this->cnt++;
+		}
+	}
+	void list::add_node_at_first(employee data)
+	{
+		node *newnode= new node(data);
+
+		if(list_empty())
+		{
+			head=newnode;
+			this->cnt++;
+		}
+		else
+		{
+			newnode->next=head;
+			head=newnode;
+			this->cnt++;
+		}
+	}
+	void list::add_node_at_specific(employee data,int pos)
+	{
+		if(pos==1)
+		{
+			add_node_at_last(data);
+		}
+		else
+		if(pos==getCnt()+1)
+		{
+			add_node_at_first(data);
+		}
+		else
+		{
+			node *newnode=new node(data);
+
+			node *trav =head;
+			int i=1;
+			while(i<pos-1)
+			{
+				i++;
+				trav=trav->next;
+			}
+
+			newnode->next=trav->next;
+			trav->next=newnode;
+			this->cnt++;
+		}
+	}
+	void list::delete_node_at_last(void)
+	{
+		if(!list_empty())
+		{
+			if(head->next==NULL)
+			{
+				delete head;
+				head=NULL;
+			}
+			else
+			{
+				node *trav=head;
+
+				while(trav->next->next != NULL)
+					trav=trav->next;
+
+				delete trav->next;
+				trav->next=NULL;
+				this->cnt--;
+			}
+		}
+	}
+	void list::delete_node_at_first(void)
+	{
+		if(!list_empty())
+		{
+			if(head->next==NULL)
+			{
+				delete head;
+				head=NULL;
+			}
+			else
+			{
+				node *trav=head->next;
+				delete head;
+				head=NULL;
+				head=trav;
+			}
+		}
+	}
+	void list::delete_node_at_specific(int pos)
+	{
+		if(pos==1)
+		{
+			delete_node_at_first();
+		}
+		else
+		if(pos==getCnt())
+		{
+			delete_node_at_last();
+		}
+		else
+		{
+			node *trav=head;
+			int i=1;
+
+			while(i < pos-1)
+			{
+				i++;
+				trav=trav->next;
+			}
+
+			node *temp=trav->next;
+			trav->next=trav->next->next;
+			delete temp;
+			temp= NULL;
+			this->cnt--;
+		}
+
+	}
+	ostream& operator<<(ostream &cout,const employee &e1)
+	{
+		cout<<"employee id :: "<<e1.empid<<endl;
+		cout<<"name :: "<<e1.name<<endl;
+		cout<<"salary :: "<<e1.salary<<endl;
+		return cout;
+	}
+	istream& operator>>(istream &cin,employee &e1)
+		{
+			cout<<"employee id :: "<<endl;
+			cin>>e1.empid;
+			cout<<"name :: "<<endl;
+			cin>>e1.name;
+			cout<<"salary :: "<<endl;
+			cin>>e1.salary;
+			return cin;
+		}
+enum menu_list{EXIT, ADDF, ADDL, ADDS, DELF, DELL, DELS, DESP};
+
+int menu_list(void)
+{
+	int choice;
+	cout<<"0.EXIT"<<endl;
+	cout<<"1.ADDF"<<endl;
+	cout<<"2.ADDL"<<endl;
+	cout<<"3.ADDS"<<endl;
+	cout<<"4.DELF"<<endl;
+	cout<<"5.DELL"<<endl;
+	cout<<"6.DELS"<<endl;
+	cout<<"7.DESP"<<endl;
+	cout<<"enter the choice :: "<<endl;
+	cin>>choice;
+
+	return choice;
+}
+int main(void)
+{
+	list p;
+	employee e1;
+
+	int choice, data, pos;
+	while((choice=menu_list())!=0)
+	{
+		switch(choice)
+		{
+		case EXIT:
+			exit(0);
+
+		case ADDF:
+				cout<<"enter the data at first:: "<<endl;
+				cin>>e1;
+				p.add_node_at_first(e1);
+			break;
+
+		case ADDL:
+				cout<<"enter the data at last:: "<<endl;
+				cin>>e1;
+				p.add_node_at_last(e1);
+			break;
+
+		case ADDS:
+				cout<<"enter the position :: "<<endl;
+				cin>>pos;
+
+				if(pos >= 1 && pos <p.getCnt()+1)
+				{
+					cout<<"valid position"<<endl;
+				}
+				else
+					cout<<"invalid position"<<endl;
+
+				cout<<"enter the data at last:: "<<endl;
+				cin>>data;
+				p.add_node_at_specific(e1,pos);
+			break;
+
+		case DELF:
+			p.delete_node_at_first();
+			break;
+
+		case DELL:
+			p.delete_node_at_last();
+			break;
+
+		case DELS:
+			int pos;
+
+				cout<<"enter the position :: "<<endl;
+				cin>>pos;
+
+				if(pos >= 1 && pos <p.getCnt()+1)
+				{
+					cout<<"valid position"<<endl;
+				}
+				else
+				{
+					cout<<"invalid position"<<endl;
+				}
+
+
+			p.delete_node_at_specific(pos);
+			break;
+		case DESP:
+			p.dispaly();
+			cout<<endl;
+			break;
+		}
+	}
+	return 0;
+}

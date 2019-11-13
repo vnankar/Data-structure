@@ -1,0 +1,6 @@
+16:04:05 **** Incremental Build of configuration Debug for project ds_linearqueue ****
+make all 
+make: Nothing to be done for 'all'.
+
+16:04:06 Build Finished. 0 errors, 0 warnings. (took 316ms)
+

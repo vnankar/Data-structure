@@ -1,0 +1,154 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+#include<cstdlib>
+class list;
+class node
+{
+private:
+	int data;
+	node *next;
+public:
+    node(int data);
+
+    friend class list;
+
+};
+node::node(int data)
+{
+	this->data=data;
+	this->next=NULL;
+
+}
+class list
+{
+private :
+
+	int cnt;
+	node *head;
+public:
+	list(void);
+	bool is_list_empty(void);
+	int get_cnt(void)const;
+    void add_node_at_last_position(int data);
+    void  add_node_at_first_position(int data);
+    void add_node_at_specific_position(int data,int pos);
+    void  displayvalues();
+};
+list::list(void)
+{
+	this->head=NULL;
+	this->cnt=0;
+}
+int list::get_cnt(void)const
+{
+	return(this->cnt);
+}
+bool list::is_list_empty(void)
+{
+	return (this->head==NULL);
+
+}
+void list::add_node_at_last_position(int data)
+{
+
+	node *newnode=new node(data);//add new node dynamically
+	if(is_list_empty())
+	{
+		head=newnode;
+		this->cnt++;
+	}
+	else
+	{
+		node *trav=head;
+
+				while(trav->next!=NULL)
+					trav= trav->next;
+					trav->next=newnode;
+				this->cnt++;
+
+	}
+}
+void list::add_node_at_first_position(int data)
+{
+	node *newnode=new node(data);
+	if(is_list_empty())
+	{
+		head=newnode;
+		this->cnt++;
+	}
+	else
+	{
+		newnode->next=head;
+		head=newnode;
+		this->cnt++;
+	}
+}
+void list::add_node_at_specific_position(int data,int pos)
+{
+	if(pos==1)
+		add_node_at_first_position(data);
+	else
+		if(pos==get_cnt()+1)
+		add_node_at_last_position(data);
+	else
+	{
+		node *newnode=new node(data)
+		node *trav=head;
+		int i=1;
+
+		while(i<pos-1)
+		{
+         i++;
+         trav=trav->next;
+		}
+		newnode->next=trav->next;
+		trav->next=newnode;
+		this->cnt++;
+	}
+}
+
+void list::displayvalues()
+{
+   if( !is_list_empty())
+   {
+
+	node *trav = head;
+	cout<<"no.of nodes in list are:  "<<get_cnt()<<endl;
+	cout<<"list is: ";
+	while(trav !=NULL)
+	{
+		cout<<trav->data<<" ->";
+		trav = trav->next;
+	}
+	cout<<"null"<<endl;
+   }
+	else
+		cout<<"list is empty "<<endl;
+}
+
+
+int main(void)
+{
+	list l1;
+
+
+
+	/*cout<<"enter the data: "<<endl;
+	cin>>data;*/
+	/*l1.add_node_at_last_position(10);
+	l1.add_node_at_last_position(20);
+	l1.add_node_at_last_position(30);
+	l1.add_node_at_last_position(40);
+	l1.add_node_at_last_position(50);
+	l1.displayvalues();*/
+	    l1.add_node_at_first_position(10);
+		l1.add_node_at_first_position(20);
+		l1.add_node_at_first_position(30);
+		l1.add_node_at_first_position(40);
+		l1.add_node_at_first_position(50);
+		l1.add_node_at_specific_position(60,3);
+		l1.displayvalues();
+
+	return 0;
+}

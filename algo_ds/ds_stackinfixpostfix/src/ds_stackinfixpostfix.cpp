@@ -1,0 +1,67 @@
+#include<iostream>
+#include<stack>
+#include<cstring>
+using namespace std;
+void infix_to_postfix(char *in,char *post);
+bool is_operand(char ch);
+int priority(char opr);
+
+
+
+
+
+int main(void)
+{
+char infix[64]="a*b/c*d+e/f-g*h";
+char postfix[64]=" ";
+
+cout<<"infix expression ::   "<<infix<<endl;
+infix_to_postfix(infix,postfix);
+
+cout<<"postfix expression ::   "<<postfix<<endl;
+
+return 0;
+}
+void infix_to_postfix(char *in,char *post)
+{
+	stack<int> s;
+	int j=0;
+
+	for(int i=0; in[i] !='\0'; i++)
+	{
+		if(is_operand (in[i]))
+		{
+			post[j++]=in[i];
+
+	     }
+	else
+	 {
+		while(!s.empty() && priority(s.top()) >= priority(in[i]) )
+         	{
+           post[j++]=s.top();
+           s.pop();
+				}
+		s.push(in[i]);
+	   }
+	}
+	while( !s.empty())
+		{
+		post[j++] = s.top();s.pop();
+		}
+	post[j] = '\0';
+}
+int priority(char opr)
+{
+	switch(opr)
+	{
+	case '*':
+	case '/':
+	case '%':return 4;
+	case '+':
+	case '-':return 2;
+	}
+}
+bool is_operand(char ch)
+{
+	return ( ( ch>= 48 && ch<= 57) ||(ch >= 65 && ch <= 90) ||(ch >=97 && ch<=122));
+}

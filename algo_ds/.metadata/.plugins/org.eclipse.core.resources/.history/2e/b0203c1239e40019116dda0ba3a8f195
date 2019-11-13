@@ -1,0 +1,59 @@
+#include<iostream>
+#include<iomanip>
+#include<queue>
+using namespace std;
+
+int menu_list(void)
+{
+	int choice;
+	cout<<"dynamic queue element --"<<endl;
+	cout<<"0 EXIT"<<endl;
+	cout<<"1 ENQUEUE"<<endl;
+	cout<<"2 DEQUEUE"<<endl;
+	cout<<"enter your choice.."<<endl;
+	cin>>choice;
+	return choice;
+}
+int main(void)
+{
+	queue<int> q;
+	int choice;
+	int element;
+	while(1)
+	{
+		choice=menu_list();
+		switch(choice)
+		{
+		case 0:
+			exit(0);
+			break;
+		case 1:
+
+
+			 cout<<"enter the element"<<endl;
+			 cin>>element;
+			 q.push();
+			 cout<<element  <<" elements are entered in queue  "<<endl;
+
+
+
+			break;
+		case 2:
+			   if(!q.empty())
+			   {
+				  element= q.front();
+			      q.pop();
+			      cout<< element <<"elements are deleted from queue"<<endl;
+			   }
+			      else
+			    cout<<"queue is empty...."<<endl;
+
+				break;
+
+
+
+		}
+
+	}
+	return 0;
+}

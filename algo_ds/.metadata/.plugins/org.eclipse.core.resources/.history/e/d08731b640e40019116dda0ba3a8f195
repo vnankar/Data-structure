@@ -1,0 +1,30 @@
+#include<iostream>
+#include<iomanip>
+#include<cstdlib>
+using namespace std;
+# define SIZE 5
+
+class stack
+{
+private:
+	int arr[SIZE];
+	int top;
+public:
+	stack(void)
+{
+		this->top=-1;
+}
+	bool is_stack_full(void)
+	{
+		return(this->top = SIZE-1);
+	}
+	bool is_stack_empty(void)
+	{
+		return(this->top = -1);
+
+	}
+	void push(element)
+	{
+
+	}
+};

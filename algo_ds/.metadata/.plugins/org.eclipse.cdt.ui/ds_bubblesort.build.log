@@ -1,0 +1,6 @@
+18:17:37 **** Incremental Build of configuration Debug for project ds_bubblesort ****
+make all 
+make: Nothing to be done for 'all'.
+
+18:17:38 Build Finished. 0 errors, 0 warnings. (took 316ms)
+

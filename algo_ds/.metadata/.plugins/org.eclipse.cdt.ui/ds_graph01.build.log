@@ -1,0 +1,6 @@
+16:06:06 **** Incremental Build of configuration Debug for project ds_graph01 ****
+make all 
+make: Nothing to be done for 'all'.
+
+16:06:06 Build Finished. 0 errors, 0 warnings. (took 313ms)
+

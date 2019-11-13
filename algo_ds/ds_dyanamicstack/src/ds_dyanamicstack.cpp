@@ -1,0 +1,64 @@
+#include<iostream>
+#include<stack>
+#include<cstdlib>
+using namespace std;
+
+
+int menu_list(void)
+{
+	int choice;
+	cout<<"static stack element --"<<endl;
+	cout<<"0 EXIT"<<endl;
+	cout<<"1 PUSH"<<endl;
+	cout<<"2 POP "<<endl;
+	cout<<"enter your choice.."<<endl;
+	cin>>choice;
+	return choice;
+}
+int main(void)
+{
+	stack<int> s;
+	int choice;
+	int element;
+	while(1)
+	{
+		choice=menu_list();
+		switch(choice)
+		{
+		case 0:
+			exit(0);
+			break;
+		case 1:
+
+
+				 cout<<"enter the elements.."<<endl;
+				 cin>>element;
+				 s.push(element);
+				 cout<< element  <<" elements are entered in stack "<<endl;
+
+
+
+
+
+
+
+			break;
+		case 2:
+			   if(!s.empty())
+			   {
+				  element= s.top();
+			      s.pop();
+			      cout<< element <<"  elements are deleted from stack  "<<endl;
+			   }
+			      else
+			    cout<< "  stack is empty...." <<endl;
+
+				break;
+
+
+
+		}
+
+	}
+	return 0;
+}

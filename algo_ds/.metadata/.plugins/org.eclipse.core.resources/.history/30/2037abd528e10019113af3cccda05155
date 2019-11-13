@@ -1,0 +1,132 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Student
+{
+private:
+	int roll_no;
+	string name;
+	int age;
+public:
+	Student(void)
+{
+     cout<<"parameterless constructor"<<endl;
+	this->roll_no=0;
+	this->name=" ";
+	this->age=0;
+}//parameterless
+	Student(int roll_no,string name,int age)
+	{
+		cout<<"parameterize constructor"<<endl;
+		this->roll_no=roll_no;
+		this->name=name;
+		this->age=age;
+
+	}//parameterize
+	void acceptrecord()
+	{
+		cout<<"Enter roll_no  :    "<<endl;
+		cin>>this->roll_no;
+		cout<<"Enter name  :    "<<endl;
+	    cin>>this->name;
+		cout<<"Enter age  :    "<<endl;
+	    cin>>this->age;
+
+}//acceptrecord
+	void printrecord()
+	{
+		cout<<"Roll_no is :   "<<this->roll_no<<endl;
+		cout<<"Name is    :   "<<this->name<<endl;
+		cout<<"Age is     :   "<<this->age<<endl;
+	}//printrecord
+
+	void setroll_no(int roll_no)
+	{
+		this->roll_no=roll_no;
+		return;
+	}
+	int getroll_no(void)
+	{
+		return this->roll_no;
+	}
+
+};
+int menu_list(void)
+{
+	int choice;
+
+	cout<<"enter the choice::     "<<endl;
+	cout<<"0.exit"<<endl;
+	cout<<"1.enter the record::   "<<endl;
+	cout<<"2.display the record:: "<<endl;
+	cout<<"3.delete the values::  "<<endl;
+
+	cin>>choice;
+	return choice;
+}
+int main(void)
+{
+Student s;
+//s.setroll_no(10);
+//s.getroll_no();
+
+	int choice, roll_no, age;
+string name;
+	Student **arr=new Student*[2];
+	while((choice=menu_list())!=0)
+		{
+		switch(choice)
+		{
+		case 1:
+				for(int i=0;i<2;++i)
+				{
+                   //arr[i]->acceptrecord();
+				cout<<"enter roll_no :: "<<endl;
+				cin>>roll_no;
+				cout<<"enter name  :: "<<endl;
+				cin>>name;
+				cout<<"enter age ::   "<<endl;
+				cin>>age;
+				arr[i]=new Student(roll_no,name,age);
+				}
+				     for(int i=0;i<2;++i)
+				     {
+				      if(arr[i]==0)
+					 cout<<" exception No record inserted"<<endl;
+				     }
+				break;
+
+		case 2:
+			s.printrecord();
+					/*for(int i=0;i<2;++i)
+					{
+						arr[i]->printrecord();
+					}*/
+					break;
+
+		case 3:
+					for(int i=0;i<2;++i)
+					{
+						delete arr[i];
+						delete[]arr;
+						arr=NULL;
+					}
+					break;
+
+		}
+
+
+
+}
+return 0;
+}
+int main1()
+{
+	Student s;
+     s.setroll_no(101);
+     s.getroll_no();
+
+	return 0;
+}
+
+

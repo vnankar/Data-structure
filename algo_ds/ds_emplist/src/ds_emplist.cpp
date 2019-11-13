@@ -1,0 +1,47 @@
+#include<iostream>
+#include<string>
+#include<iomanip>
+#include<iterator>
+#include<list>
+using namespace std;
+
+class employee
+{
+private:
+	int empid;
+	string name;
+	float salary;
+public:
+	employee(int empid=0,string name=" ",float salary=0.0)
+{
+		this->empid=empid;
+		this->name=name;
+		this->salary=salary;
+}
+
+		friend ostream& operator<<(ostream& out, employee& other)
+		{
+			out<< setw(10)  <<left <<other.empid;
+			out<< setw(20)  <<left <<other.name;
+			out<< setw(30)  <<left  <<other.salary;
+			return out;
+		}
+
+};
+int main(void)
+{
+	list<employee> emp;
+
+	emp.push_back(employee(101,"vishal",10000));
+	emp.push_back(employee(102,"yogesh",20000));
+	emp.push_back(employee(103,"pratiksha",30000));
+	emp.push_back(employee(104,"sanket",40000));
+	emp.push_back(employee(105,"tushar",50000));
+
+	list<employee>::iterator itr;
+	cout<<"emplyoee list is"<<endl;
+	for(itr=emp.begin(); itr !=emp.end();  ++itr)
+		cout<< *itr  <<endl	;
+return 0;
+}
+

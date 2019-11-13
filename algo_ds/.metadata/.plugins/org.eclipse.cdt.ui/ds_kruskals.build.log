@@ -1,0 +1,50 @@
+15:54:55 **** Build of configuration Debug for project ds_kruskals ****
+make all 
+Building file: ../src/ds_kruskals.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ds_kruskals.d" -MT"src/ds_kruskals.o" -o "src/ds_kruskals.o" "../src/ds_kruskals.cpp"
+../src/ds_kruskals.cpp:34:9: error: ‘edge’ was not declared in this scope
+  vector<edge> edges;
+         ^
+../src/ds_kruskals.cpp:34:13: error: template argument 1 is invalid
+  vector<edge> edges;
+             ^
+../src/ds_kruskals.cpp:34:13: error: template argument 2 is invalid
+../src/ds_kruskals.cpp: In member function ‘void graph::acceptvalues()’:
+../src/ds_kruskals.cpp:64:11: error: expected ‘;’ before ‘ed’
+     edges ed [from,to,weight];
+           ^
+../src/ds_kruskals.cpp:64:30: warning: statement has no effect [-Wunused-value]
+     edges ed [from,to,weight];
+                              ^
+../src/ds_kruskals.cpp:65:11: error: request for member ‘push_back’ in ‘((graph*)this)->graph::edges’, which is of non-class type ‘int’
+     edges.push_back(ed);
+           ^
+../src/ds_kruskals.cpp:65:21: error: ‘ed’ was not declared in this scope
+     edges.push_back(ed);
+                     ^
+../src/ds_kruskals.cpp: In member function ‘void graph::displayedges()’:
+../src/ds_kruskals.cpp:90:10: error: ‘edge’ was not declared in this scope
+   vector<edge>::iterator itr;
+          ^
+../src/ds_kruskals.cpp:90:14: error: template argument 1 is invalid
+   vector<edge>::iterator itr;
+              ^
+../src/ds_kruskals.cpp:90:14: error: template argument 2 is invalid
+../src/ds_kruskals.cpp:90:26: error: expected initializer before ‘itr’
+   vector<edge>::iterator itr;
+                          ^
+../src/ds_kruskals.cpp:91:7: error: ‘itr’ was not declared in this scope
+   for(itr=edges.begin(); itr!=edges.end(); ++itr)
+       ^
+../src/ds_kruskals.cpp:91:17: error: request for member ‘begin’ in ‘((graph*)this)->graph::edges’, which is of non-class type ‘int’
+   for(itr=edges.begin(); itr!=edges.end(); ++itr)
+                 ^
+../src/ds_kruskals.cpp:91:37: error: request for member ‘end’ in ‘((graph*)this)->graph::edges’, which is of non-class type ‘int’
+   for(itr=edges.begin(); itr!=edges.end(); ++itr)
+                                     ^
+make: *** [src/ds_kruskals.o] Error 1
+src/subdir.mk:18: recipe for target 'src/ds_kruskals.o' failed
+
+15:54:56 Build Failed. 15 errors, 1 warnings. (took 914ms)
+

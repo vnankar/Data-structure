@@ -1,0 +1,6 @@
+09:04:28 **** Incremental Build of configuration Debug for project ds_employee ****
+make all 
+make: Nothing to be done for 'all'.
+
+09:04:28 Build Finished. 0 errors, 0 warnings. (took 364ms)
+

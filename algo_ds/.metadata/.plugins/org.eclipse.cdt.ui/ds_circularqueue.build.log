@@ -1,0 +1,15 @@
+16:17:59 **** Incremental Build of configuration Debug for project ds_circularqueue ****
+make all 
+Building file: ../src/ds_circularqueue.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ds_circularqueue.d" -MT"src/ds_circularqueue.o" -o "src/ds_circularqueue.o" "../src/ds_circularqueue.cpp"
+Finished building: ../src/ds_circularqueue.cpp
+ 
+Building target: ds_circularqueue
+Invoking: GCC C++ Linker
+g++  -o "ds_circularqueue"  ./src/ds_circularqueue.o   
+Finished building target: ds_circularqueue
+ 
+
+16:18:00 Build Finished. 0 errors, 0 warnings. (took 698ms)
+

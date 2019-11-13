@@ -1,0 +1,13 @@
+15:58:14 **** Incremental Build of configuration Debug for project ds_sorting ****
+make all 
+Building target: ds_sorting
+Invoking: GCC C++ Linker
+g++  -o "ds_sorting"  ./src/ds_sorting.o   
+/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+makefile:45: recipe for target 'ds_sorting' failed
+collect2: error: ld returned 1 exit status
+make: *** [ds_sorting] Error 1
+
+15:58:15 Build Failed. 3 errors, 0 warnings. (took 421ms)
+
